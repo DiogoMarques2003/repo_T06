@@ -1,0 +1,48 @@
+{
+  "name": "repo_t06",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/DiogoMarques2003/repo_T06.git",
+  "author": "Diogo Marques <diogomarques2003@protonmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
+    "start": "node dist/server.js",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
+    "prepare": "yarn prisma generate"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.3",
+    "@babel/node": "^7.22.19",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
+    "@types/node": "^20.10.0",
+    "@types/uuid": "^9.0.7",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "eslint": "^8.54.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.0",
+    "prisma": "^5.6.0",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.4.1",
+    "@fastify/env": "^4.3.0",
+    "@fastify/jwt": "^7.2.4",
+    "@fastify/swagger": "^8.12.0",
+    "@fastify/swagger-ui": "^1.10.1",
+    "@prisma/client": "^5.6.0",
+    "fastify": "^4.24.3",
+    "fastify-plugin": "^4.5.1",
+    "pino-pretty": "^10.2.3",
+    "uuid": "^9.0.1"
+  }
+}
