@@ -2,20 +2,14 @@ import { v4 as uuid } from 'uuid';
 
 import Servico from './Servico';
 
-class Login {
+class TiposServico {
   public readonly id: string;
 
-  public email: string;
-
-  public username: string;
-
-  public password: string;
-
-  public type: string;
+  public nome: string;
 
   public readonly servicos?: Servico[];
 
-  constructor(props: Omit<Login, 'id'>, id?: string) {
+  constructor(props: Omit<TiposServico, 'id'>, id?: string) {
     Object.assign(this, props);
 
     if (!id) {
@@ -24,4 +18,4 @@ class Login {
   }
 }
 
-export default Login;
+export default TiposServico;

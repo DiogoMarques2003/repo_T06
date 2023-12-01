@@ -8,6 +8,5 @@ declare module 'fastify' {
 
   interface FastifyRequest {
     userID?: string;
-    pdfFilePath?: string;
   }
 }
