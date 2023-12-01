@@ -11,9 +11,26 @@ datasource db {
 }
 
 model Login {
-  id       String @id @default(uuid())
-  email    String @unique
-  username String @unique
+  id       String    @id
+  email    String    @unique
+  username String    @unique
   password String
-  type     String   // "operador" | "cliente"
+  type     String // "operador" | "cliente"
+  servicos  Servico[]
+}
+
+model TiposServico {
+  id      String    @id
+  nome    String    @unique
+  servicos Servico[]
+}
+
+model Servico {
+  id             String       @id
+  donoId         String
+  tiposServicoId String
+  nome           String
+  descricao      String
+  dono           Login        @relation(fields: [donoId], references: [id])
+  tipoServico    TiposServico @relation(fields: [tiposServicoId], references: [id])
 }

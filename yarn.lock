@@ -2361,13 +2361,6 @@ fastify-plugin@^4.0.0, fastify-plugin@^4.5.1:
   resolved "https://registry.yarnpkg.com/fastify-plugin/-/fastify-plugin-4.5.1.tgz#44dc6a3cc2cce0988bc09e13f160120bbd91dbee"
   integrity sha512-stRHYGeuqpEZTL1Ef0Ovr2ltazUT9g844X5z/zEBFLG8RYlpDiOCIG+ATvYEp+/zmc7sN29mcIMp8gvYplYPIQ==
 
-fastify-prisma@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/fastify-prisma/-/fastify-prisma-0.0.2.tgz#742db92ad44006f2d7da09af2a16a09f2ea82547"
-  integrity sha512-P2/yBaTlPIKBtibNEjvrul3Q3/UHCzYZsC6cqEHnILlTswNJU4FAJQ1nZeGaqy4alLBUeIfJFMRPsT4w/lpxMA==
-  dependencies:
-    typescript "^4.2.4"
-
 fastify@^4.24.3:
   version "4.24.3"
   resolved "https://registry.yarnpkg.com/fastify/-/fastify-4.24.3.tgz#bf97a3f5158ff7f78af949d483cac4e6115fb651"
@@ -4030,11 +4023,6 @@ typed-array-length@^1.0.4:
     call-bind "^1.0.2"
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
-
-typescript@^4.2.4:
-  version "4.9.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
-  integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
 typescript@^5.3.2:
   version "5.3.2"
