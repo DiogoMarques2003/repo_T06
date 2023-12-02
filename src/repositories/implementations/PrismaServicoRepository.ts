@@ -14,6 +14,14 @@ class PrismaServicoRepository implements IServicoRepository {
     return this.prisma.servico.findFirst({ where: { tiposServicoId, donoId } });
   }
 
+  getByFilter(
+    filtros: GetServicosWithFilters
+  ): Promise<Servico[]> {
+    return this.prisma.servico.findMany({
+      where: filtros
+    });
+  }
+
   getByID(id: string): Promise<Servico> {
     return this.prisma.servico.findUnique({ where: { id } });
   }
