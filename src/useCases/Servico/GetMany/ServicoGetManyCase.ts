@@ -5,8 +5,9 @@ import ILoginRepository from '@repositories/ILoginRepository';
 import IServicoRepository from '@repositories/IServicoRepository';
 import ITiposServicoRepository from '@repositories/ITiposServico';
 import AppError from '@errors/AppError';
-import { ACCOUNT_CLIENTE, ACCOUNT_OPERATOR } from '@constants/index';
+import { ACCOUNT_CLIENTE } from '@constants/index';
 import { verifyToken } from '@shared/token';
+import TiposServico from '@entities/TiposServico';
 import IServicoGetManyDTO from './IServicoGetManyDTO';
 
 class ServicoGetManyCase {
@@ -26,15 +27,19 @@ class ServicoGetManyCase {
     if (!login) throw new AppError('O utilizador não existe', 401);
     if (login.type !== ACCOUNT_CLIENTE) throw new AppError('Apenas clientes podem selecionar serviços', 401);
 
-    const tiposServico = await this.tiposServicoRepository.getByID(tiposServicoId);
-    if(tiposServicoId && !tiposServico) throw new AppError('O tipo de serviço não existe', 404);
+    let tiposServico: TiposServico;
+
+    if (tiposServicoId) {
+      tiposServico = await this.tiposServicoRepository.getByID(tiposServicoId);
+      if (tiposServicoId && !tiposServico) throw new AppError('O tipo de serviço não existe', 404);
+    }
 
     const filters : GetServicosWithFilters = {};
     if (nome) filters.nome = { contains: nome };
     if (tiposServico) filters.tiposServicoId = tiposServico.id.toLowerCase();
     if (descricao) filters.descricao = { contains: descricao };
 
-    return await this.servicoRepository.getByFilter(filters);
+    return this.servicoRepository.getByFilter(filters);
   }
 }
 

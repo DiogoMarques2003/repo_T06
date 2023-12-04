@@ -1,9 +1,9 @@
 interface IServicoGetManyDTO {
-    Querystring: {
-      nome?: string;
-      descricao?: string,
-      tipoServico?: string;
-    }
+  Querystring: {
+    nome?: string;
+    descricao?: string,
+    tiposServicoId?: string;
   }
-  
+}
+
 export default IServicoGetManyDTO;

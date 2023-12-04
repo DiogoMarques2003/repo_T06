@@ -67,7 +67,7 @@ const ServicoGetMany: FastifySchema = {
   summary: 'Obter serivços',
   operationId: 'servicoGetMany',
   tags: ['Serviços'],
-  queryString: {
+  querystring: {
     type: 'object',
     properties: {
       nome: { type: 'string' },
@@ -89,9 +89,9 @@ const ServicoGetMany: FastifySchema = {
               tiposServicoId: { type: 'string' },
               donoId: { type: 'string' },
               nome: { type: 'string' },
-              descricao: { type: 'string' }
-            }
-          }
+              descricao: { type: 'string' },
+            },
+          },
         },
         message: { type: 'string' },
       },
