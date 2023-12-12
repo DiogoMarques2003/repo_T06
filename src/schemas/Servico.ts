@@ -127,4 +127,70 @@ const ServicoGetMany: FastifySchema = {
   },
 };
 
-export { ServicoCreate, ServicoGetMany };
+const ServicoPedirOrcamento: FastifySchema = {
+  description: 'Pedir orçamento a um serviço',
+  summary: 'Pedir orçamento a um serviço',
+  operationId: 'servicoPedirOrcamento',
+  tags: ['Serviços'],
+  params: {
+    type: 'object',
+    properties: {
+      servicoId: { type: 'string' },
+    },
+  },
+  body: {
+    type: 'object',
+    properties: {
+      descricao: { type: 'string' },
+    },
+  },
+  response: {
+    201: {
+      description: 'Pedido do serviço criado com sucesso',
+      type: 'object',
+      properties: {
+        pedido: {
+          type: 'object',
+          properties: {
+            id: { type: 'string' },
+            servicoId: { type: 'string' },
+            clienteId: { type: 'string' },
+            status: { type: 'string' },
+            descricao: { type: 'string' },
+          },
+        },
+        message: { type: 'string' },
+      },
+    },
+    400: {
+      description: 'Dados para criar o pedido do serviço inválidos',
+      type: 'object',
+      properties: {
+        message: { type: 'string' },
+      },
+    },
+    401: {
+      description: 'Credenciais inválidas',
+      type: 'object',
+      properties: {
+        message: { type: 'string' },
+      },
+    },
+    404: {
+      description: 'O serviço não existe',
+      type: 'object',
+      properties: {
+        message: { type: 'string' },
+      },
+    },
+    500: {
+      description: 'Erro interno do servidor',
+      type: 'object',
+      properties: {
+        message: { type: 'string' },
+      },
+    },
+  },
+};
+
+export { ServicoCreate, ServicoGetMany, ServicoPedirOrcamento };

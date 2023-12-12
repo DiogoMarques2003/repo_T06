@@ -16,12 +16,13 @@ model Login {
   username String    @unique
   password String
   type     String // "operador" | "cliente"
-  servicos  Servico[]
+  servicos Servico[]
+  pedidos   Pedidos[]
 }
 
 model TiposServico {
-  id      String    @id
-  nome    String    @unique
+  id       String    @id
+  nome     String    @unique
   servicos Servico[]
 }
 
@@ -33,4 +34,15 @@ model Servico {
   descricao      String
   dono           Login        @relation(fields: [donoId], references: [id])
   tipoServico    TiposServico @relation(fields: [tiposServicoId], references: [id])
+  pedidos         Pedidos[]
+}
+
+model Pedidos {
+  id        String  @id
+  servicoId String
+  clienteId String
+  servico   Servico @relation(fields: [servicoId], references: [id])
+  cliente   Login   @relation(fields: [clienteId], references: [id])
+  status    String // "pendente" | "aceito" | "recusado" | "cancelado"
+  descricao String
 }
