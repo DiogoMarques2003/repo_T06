@@ -7,7 +7,7 @@ interface IServicoRepository {
   update(servico: Servico): Promise<Servico>;
   delete(id: string): Promise<boolean>;
   getByTipoServicoAndOwner(tiposServicoId: string, donoId: string): Promise<Servico>;
-  getByFilter( filtros: GetServicosWithFilters): Promise<Servico[]> | null;
+  getByFilter(filtros: GetServicosWithFilters): Promise<Servico[]> | null;
 }
 
 export default IServicoRepository;
