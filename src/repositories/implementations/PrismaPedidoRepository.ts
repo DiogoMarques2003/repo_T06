@@ -1,3 +1,4 @@
+import { PEDIDO_PENDENTE } from '@constants/index';
 import Pedidos from '@entities/Pedidos';
 import { PrismaClient } from '@prisma/client';
 
@@ -31,7 +32,7 @@ class PrismaPedidoRepository implements IPedidoRepository {
   }
 
   getByClienteAndServico(clienteId: string, servicoId: string): Promise<Pedidos> {
-    return this.prisma.pedidos.findFirst({ where: { clienteId, servicoId } });
+    return this.prisma.pedidos.findFirst({ where: { clienteId, servicoId, status: PEDIDO_PENDENTE } });
   }
 }
 
