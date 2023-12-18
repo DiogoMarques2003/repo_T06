@@ -2,6 +2,7 @@ import { v4 as uuid } from 'uuid';
 
 import Servico from './Servico';
 import Login from './Login';
+import Proposta from './Proposta';
 
 class Pedidos {
   public readonly id: string;
@@ -17,6 +18,8 @@ class Pedidos {
   public readonly servico?: Servico;
 
   public readonly cliente?: Login;
+
+  public readonly propostas?: Proposta[];
 
   constructor(props: Omit<Pedidos, 'id'>, id?: string) {
     Object.assign(this, props);

@@ -17,7 +17,7 @@ model Login {
   password String
   type     String // "operador" | "cliente"
   servicos Servico[]
-  pedidos   Pedidos[]
+  pedidos  Pedidos[]
 }
 
 model TiposServico {
@@ -34,15 +34,25 @@ model Servico {
   descricao      String
   dono           Login        @relation(fields: [donoId], references: [id])
   tipoServico    TiposServico @relation(fields: [tiposServicoId], references: [id])
-  pedidos         Pedidos[]
+  pedidos        Pedidos[]
 }
 
 model Pedidos {
-  id        String  @id
+  id        String      @id
   servicoId String
   clienteId String
-  servico   Servico @relation(fields: [servicoId], references: [id])
-  cliente   Login   @relation(fields: [clienteId], references: [id])
-  status    String // "pendente" | "aceito" | "recusado" | "cancelado"
+  servico   Servico     @relation(fields: [servicoId], references: [id])
+  cliente   Login       @relation(fields: [clienteId], references: [id])
+  propostas Propostas[]
+  status    String // "pendente" | "cancelado"
   descricao String
+}
+
+model Propostas {
+  id        String  @id
+  pedidoID  String
+  pedido    Pedidos @relation(fields: [pedidoID], references: [id])
+  descricao String
+  valor     Int
+  status    String // "pendente" | "aceito" | "recusado" | "cancelado"
 }
