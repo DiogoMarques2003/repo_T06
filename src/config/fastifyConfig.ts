@@ -58,7 +58,7 @@ const swaggerOptions: SwaggerOptions = {
     schemes: process.env.NODE_ENV === 'production' ? ['https'] : ['http'],
     tags: [
       { name: 'Serviços', description: 'Rotas para os Serviços' },
-      { name: 'Propostas', description: 'Rotas para as Propostas' },
+      { name: 'Pedidos', description: 'Rotas para os Pedidos' },
     ],
     securityDefinitions: {
       authorization: {

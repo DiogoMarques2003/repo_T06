@@ -44,7 +44,7 @@ model Pedidos {
   servico   Servico     @relation(fields: [servicoId], references: [id])
   cliente   Login       @relation(fields: [clienteId], references: [id])
   propostas Propostas[]
-  status    String // "pendente" | "cancelado"
+  status    String // "pendente" | "cancelado" | "em reavaliação"
   descricao String
 }
 
@@ -54,5 +54,5 @@ model Propostas {
   pedido    Pedidos @relation(fields: [pedidoID], references: [id])
   descricao String
   valor     Int
-  status    String // "pendente" | "aceito" | "recusado" | "cancelado"
+  status    String // "pendente" | "aceito" | "recusado" | "cancelado" | "reavaliacao"
 }

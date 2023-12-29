@@ -1,6 +1,8 @@
 import { FastifyInstance, FastifyRequest } from 'fastify';
 
 import {
+  PedidoCriarProposta,
+  PedidoGetById,
   PropostaGetMany, ServicoCreate, ServicoGetMany, ServicoPedirOrcamento,
 } from '@schemas/index';
 import IServicoCreateDTO from '@useCases/Servico/Create/IServicoCreateDTO';
@@ -11,6 +13,10 @@ import IServicoPedirOrcamentoDTO from '@useCases/Servico/PedirOrcamento/IServico
 import servicoPedirOrcamento from '@useCases/Servico/PedirOrcamento';
 import IPedidoGetPropostasDTO from '@useCases/Pedido/GetPropostas/IPedidoGetPropostasDTO';
 import propostaGetMany from '@useCases/Pedido/GetPropostas';
+import IPedidoGetByIdDTO from '@useCases/Pedido/GetById/IPedidoGetByIdDTO';
+import pedidoGeetById from '@useCases/Pedido/GetById';
+import IPedidoCriarPropostaDTO from '@useCases/Pedido/CriarProposta/IPedidoCriarPropostaDTO';
+import pedidoCriarProposta from '@useCases/Pedido/CriarProposta';
 
 class Routes {
   handle(server: FastifyInstance, opts: FastifyRoutesOptions, next: () => void) {
@@ -24,6 +30,10 @@ class Routes {
     server.get('/pedido/:pedidoId/propostas', { schema: PropostaGetMany }, (req: FastifyRequest<IPedidoGetPropostasDTO>, res) => propostaGetMany(server).handle(req, res));
 
     server.post('/servico/:servicoId/pedir-orcamento', { schema: ServicoPedirOrcamento }, (req: FastifyRequest<IServicoPedirOrcamentoDTO>, res) => servicoPedirOrcamento(server).handle(req, res));
+
+    server.get('/pedido/:pedidoID', { schema: PedidoGetById }, (req: FastifyRequest<IPedidoGetByIdDTO>, res) => pedidoGeetById(server).handle(req, res));
+
+    server.post('/pedido/:pedidoID/proposta', { schema: PedidoCriarProposta }, (req: FastifyRequest<IPedidoCriarPropostaDTO>, res) => pedidoCriarProposta(server).handle(req, res));
 
     next();
   }

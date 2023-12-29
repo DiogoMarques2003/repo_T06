@@ -10,6 +10,10 @@ class PrismaPropostaRepository implements IPropostaRepository {
     this.prisma = prisma;
   }
 
+  criar(proposta: Proposta): Promise<Proposta> {
+    return this.prisma.propostas.create({ data: proposta });
+  }
+
   getByPedido(pedidoId: string): Promise<Proposta[]> {
     return this.prisma.propostas.findMany({ where: { pedidoID: pedidoId } });
   }

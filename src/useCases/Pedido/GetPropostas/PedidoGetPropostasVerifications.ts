@@ -10,7 +10,7 @@ class PedidoGetPropostasVerifications {
       pedidoId,
     } = req.params;
 
-    if (pedidoId && verifyUUID(pedidoId)) throw new AppError('ID de pedido inválido', 400);
+    if (typeof pedidoId !== 'string' && verifyUUID(pedidoId)) throw new AppError('ID de pedido inválido', 400);
   }
 }
 
